@@ -1,5 +1,10 @@
 require 'sinatra'
 
-get '/' do
-    erb:hola
+get '/crear/terreno' do
+    erb:crearTerreno
+end
+
+post'/dimensionar' do
+    @dimx = params[:dimx]
+    erb :dimensiones
 end
