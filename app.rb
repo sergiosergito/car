@@ -13,3 +13,13 @@ post'/dimensionar' do
     @dimy = params[:dimy]
     erb :dimensiones
 end
+
+get '/set/car/position' do
+    erb:setCarPosition
+end
+
+post '/car/position/set' do
+    @posx = params[:posx]
+    @posy = params[:posy]
+    erb:carPositionSet
+end
