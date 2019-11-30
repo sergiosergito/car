@@ -1,5 +1,5 @@
 require 'sinatra'
 
 get '/' do
-    "Bienvenido al saludador"
+    erb:hola
 end
