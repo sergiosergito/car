@@ -6,5 +6,6 @@ end
 
 post'/dimensionar' do
     @dimx = params[:dimx]
+    @dimy = params[:dimy]
     erb :dimensiones
 end
