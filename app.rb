@@ -1,5 +1,9 @@
 require 'sinatra'
 
+get '/' do
+    erb:helloWorld
+end
+
 get '/crear/terreno' do
     erb:crearTerreno
 end
