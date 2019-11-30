@@ -1,8 +1,17 @@
-<h1>Hola </h1>
+<h1>Mostrando la Tabla </h1>
 
 <h1><%= @dimx %></h1>
 <h1><%= @dimy %></h1>
 
+<table border = '1' class="table">
+    <% for row in 0..@dimx-1 do  %>
+        <tr>
+            <%for col in 0..@dimy-1 do %>
+                <td> <%="celda" %> </td> 
+            <% end %>
+        </tr>
+    <% end %>
+</table>
 
 
 
