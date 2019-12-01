@@ -6,6 +6,8 @@ set :DimensionTerrainX,0
 set :DimensionTerrainY,0
 set :PositionX,0
 set :PositionY,0
+set :Ruta,""
+
 
 get '/' do
     erb:principal
@@ -37,11 +39,9 @@ post '/dimensionar' do
 #    puts "good enough"  
     erb :dimensiones
 end
-
 get '/setCarPosition' do
     erb:setCarPosition
 end
-
 post '/carPositionSet' do
     #RESCATAMOS LAS DIMENSIONES DEL TERRENO
     @dimx = settings.DimensionTerrainX
@@ -61,5 +61,15 @@ end
 
 post '/route' do
     @ruta = params[:ruta]
+    settings.Ruta = @ruta
     erb:route
+end
+
+get '/finalPosition' do
+    @dimx = settings.DimensionTerrainX
+    @dimy = settings.DimensionTerrainY
+    @posx = settings.PositionX
+    @posy= settings.PositionY
+    @ruta = settings.Ruta
+    erb:finalPosition
 end

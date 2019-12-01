@@ -15,7 +15,7 @@
             <% if @dimx.to_i == 0 || @dimy.to_i == 0 || @dimx.to_i < 0 || @dimy.to_i < 0%>
                 <h4> Ooops! Hubo un error con las dimensiones del Terreno</h4>
                   <form method = 'get' action='/createTerrain'>
-                        <input type = 'submit' value = 'Entendido!'>
+                        <input type = 'submit' value = '¡Entendido!'>
                   </form>
            <% else %>
             <p>Terreno Creado :: <%= @dimx %> x <%= @dimy %></p>

@@ -12,35 +12,33 @@
         <div id="content">
             <h1>Mostrando posicion del Robot </h1>
             <p> Dimensiones del Terreno <%= @dimx %> x <%= @dimy %> </p>
-            <% if @posx.to_i == 0 || @posy.to_i == 0 %>
+            <% if @posx.to_i == 0 || @posy.to_i == 0 || @posy.to_i < 0 || @posx.to_i < 0 ||  @posx.to_i > @dimx.to_i || @posy.to_i > @dimy.to_i%>
                 <p> Ooops! Hubo un error con las coordenadas del Robot.</p>
+                <form method = 'get' action='/setCarPosition'>
+                    <input type = 'submit' value = '¡Entendido!'>
+                </form>
             <% else %>
                 <p> Coordenadas Del Robot <%= @posx %> x <%= @posy %> </p>
-                <% if @posx.to_i > @dimx.to_i || @posy.to_i > @dimy.to_i%>
-                    <h1>EL ROBOT ESTA FUERA DEL TERRENO</h1>
-                    <% else %>
-                        <table border="1">
-                            <% for row in 0..@dimy-1 do  %>
-                                <tr>
-                                    <%for col in 0..@dimx-1 do %>
-                                        <% if @posx.to_i == col+1 && @posy.to_i == row+1 %>
-                                            <td> <%="X"%> </td>
-                                        <% else %>
-                                            <td> <%="___"%> </td>                                   
-                                        <% end %>
+                    <table border="1">
+                        <% for row in 0..@dimy-1 do  %>
+                            <tr>
+                                <%for col in 0..@dimx-1 do %>
+                                    <% if @posx.to_i == col+1 && @posy.to_i == row+1 %>
+                                        <td> <%="X"%> </td>
+                                    <% else %>
+                                        <td> <%="___"%> </td>                                   
                                     <% end %>
-                                </tr>
-                            <% end %>
+                                <% end %>
+                            </tr>
+                        <% end %>
                     </table> 
-                    <% end %>
+                <form method = 'get' action='/createRoute'>
+                        <input type = 'submit' value = 'Crear Ruta'>
+                </form> 
+                <form method = 'get' action='/setCarPosition'>
+                        <input type = 'submit' value = 'Anterior'>
+                </form>
             <% end %>
-            <form method = 'get' action='/createRoute'>
-                <input type = 'submit' value = 'Crear Ruta'>
-            </form> 
-            <form method = 'get' action='/setCarPosition'>
-                <input type = 'submit' value = 'Anterior'>
-            </form>
-
         </div>
     </div>
 </body>
@@ -88,7 +86,13 @@
         left: 10px;
         padding: 10px 20px 10px 10px;
     }
-
+    #container input{
+        margin: auto;
+        margin-top: 20px ;
+        width: 40%;
+        display: block;
+        padding: 5px;
+   }
    input[type=button], input[type=submit], input[type=reset] {
         background-color: #f4f4f4;
         border: 2px solid black;

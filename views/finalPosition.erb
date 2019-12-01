@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Proyecto Primera Iteracion</title>
+
+</head>
+<body>
+    <div id="container">
+        <div id="content">
+            <h1> RESULTADO </h1>
+            <p>Datos <%=@ruta%>
+            Terreno <%=@dimx%> * <%=@dimy%>
+            Auto <%=@posx%> * <%=@posy%></p>
+            <% 
+                @tamRuta= @ruta.size 
+                @FinalPositionX = @posx.to_i
+                @FinalPositionY = @posy.to_i
+            %>
+            
+            <% for i in 0..@tamRuta-1 do  %>
+                <% if @FinalPositionX.to_i == @dimx ||  @FinalPositionY.to_i == @dimY || @FinalPositionX.to_i == 0 ||  @FinalPositionY.to_i == 0 %>
+                    <h2>¡¡¡El Robot se Salio del Mapa!!!</h2>
+                    <% if @ruta[i]=='U' %>
+                        <p> Numero de Movimento : <%=i/2+1%> Intenando ir Arriba</p>
+                    <% end %>
+                    <% if @ruta[i]=='D' %>
+                        <p> Numero de Movimento : <%=i/2+1%> Intenando ir Bajo</p>
+                    <% end %>
+                    <% if @ruta[i]=='L' %> 
+                        <p> Numero de Movimento : <%=i/2+1%> Intenando ir a la Izquierda</p>
+                    <% end %>
+                    <% if @ruta[i]=='R' %>      
+                        <p> Numero de Movimento : <%=i/2+1%> Intenando ir a la Derecha</p>
+                    <% end %>
+                    <%break%>
+                <% else %>
+                    <% if @ruta[i] =='-' %>
+                        <% if @ruta[i+1]=='U' %>
+                                <% 
+                                @FinalPositionY = @FinalPositionY - 1
+                                %>
+                        <% end %>
+                        <% if @ruta[i+1]=='D' %>
+                            <% 
+                                @FinalPositionY = @FinalPositionY + 1
+                                %>
+                        <% end %>
+                        <% if @ruta[i+1]=='L' %> 
+                                <% 
+                                @FinalPositionX = @FinalPositionX - 1
+                                %>
+                        <% end %>
+                        <% if @ruta[i+1]=='R' %>      
+                                <% 
+                                @FinalPositionX = @FinalPositionX + 1
+                                %>
+                        <% end %>
+                    <% end %>
+                <% end %>
+            <% end %>
+
+            <table border="1">
+                <% for row in 0..@dimy-1 do  %>
+                    <tr>
+                        <%for col in 0..@dimx-1 do %>
+                            <% if @posx.to_i == col+1 && @posy.to_i == row+1 %>
+                                <td> <%="X"%> </td>
+                            <% else %>
+                                <% if @FinalPositionX.to_i == col+1 && @FinalPositionY.to_i == row+1 %>
+                                    <td> <%="@"%> </td>
+                                <% else %>
+                                    <td> <%="___"%> </td>  
+                                <% end %>         
+                            <% end %>
+                        <% end %>
+                    </tr>
+                <% end %>
+            </table>
+
+            <h4>Posición FInal <%=@FinalPositionX%> x <%=@FinalPositionY%></h4>
+
+            <form method = 'get' action='/'>
+                <input type = 'submit' value = 'Volver Al Inicio'>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+     @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Regular'), 
+         local('Roboto-Regular'), 
+         url(http://themes.googleusercontent.com/static/fonts/roboto/v11/2UX7WLTfW3W8TclTUvlFyQ.woff) 
+         format('woff');
+  }
+   html, body{
+       font: 10px;
+       font-family: Roboto;  
+       text-align: center;
+       background: #3d3d3d;
+       text-align: center;
+    }
+   #container {
+        position: absolute;
+        margin: -210px 0 0 -360px;
+        left: 55%;
+        top: 40%;
+   }
+
+   #container table{
+       style=margin: 0 auto;
+       margin: auto;
+       font-size: 20px;
+       padding: 5px;
+       border:2px solid black;
+       background-color:#f4f4f4;
+   }
+   #content {
+        border: 2px solid white;
+        background: #808080;
+        width: 520px;
+        height: auto;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding: 10px 20px 10px 10px;
+    }
+
+   input[type=button], input[type=submit], input[type=reset] {
+        background-color: #f4f4f4;
+        border: 2px solid black;
+        color: black;
+        padding: 16px 32px;
+        font-size: 16px;
+        min-width: 21%;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+
+    }
+    input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+      background-color: #333;
+      color:white;
+    }
+</style>
