@@ -4,7 +4,8 @@ require 'sinatra'
 @@terrain = Terrain.new(0,0)
 set :DimensionTerrainX,0
 set :DimensionTerrainY,0
-
+set :PositionX,0
+set :PositionY,0
 
 get '/' do
     erb:principal
@@ -45,20 +46,20 @@ post '/carPositionSet' do
     #RESCATAMOS LAS DIMENSIONES DEL TERRENO
     @dimx = settings.DimensionTerrainX
     @dimy = settings.DimensionTerrainY
-    
+
     @posx = params[:posx]
     @posy = params[:posy]
+    
+    settings.PositionX = @posx
+    settings.PositionY = @posy
+
     erb:carPositionSet
 end
-
-
-
-get '/create/route' do
+get '/createRoute' do
     erb:createRoute
 end
 
 post '/route' do
-    @posx = params[:posx]
-    @posy = params[:posy]
+    @ruta = params[:ruta]
     erb:route
 end
