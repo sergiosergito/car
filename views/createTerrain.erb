@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,25 +10,23 @@
 <body>
     <div id="container">
         <div id="content">
-            <h1> Dar posicion al Robot </h1>
-            <form method = 'post' action='/carPositionSet'>
-                Dimension en X: <input type = 'text' name = 'posx'>
-                Dimension en Y: <input type = 'text' name = 'posy'>
+            <h1>Crear Terreno </h1>
+            <form method = 'post' action='/dimensionar'>
+                Dimension en X: <input id="q" type = 'text' name = 'dimx'>
+                Dimension en Y: <input id="q"type = 'text' name = 'dimy'>
                 <input type = 'submit' value = 'Aceptar'>
             </form>
-            
-
+                
             <form method = 'get' action='/'>
-                <input type = 'submit' value = 'Cancelar'>
+                <input type = 'submit' value = 'Anterior'>
             </form>
         </div>
     </div>
 </body>
 </html>
 
-
 <style>
-     @font-face {
+    @font-face {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -56,7 +51,6 @@
    }
    #container a:link:hover{
        background-color: white;
-        
        transition:0.6s;
    }
    #container input{
@@ -65,8 +59,6 @@
        width: 50%;
        display: block;
        padding: 5px;
-       text-decoration: none;
-       border:2px solid black;
    }
 
    #container a:link, {
@@ -90,5 +82,4 @@
         left: 10px;
         padding: 10px 20px 10px 10px;
     }
-
 </style>

@@ -1,20 +1,93 @@
-<h1>Mostrando la Tabla </h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Proyecto Primera Iteracion</title>
 
-<h1><%= @dimx %></h1>
-<h1><%= @dimy %></h1>
-
-<table border = '1' class="table">
-    <% for row in 0..@dimx-1 do  %>
-        <tr>
-            <%for col in 0..@dimy-1 do %>
-                <td> <%="celda" %> </td> 
+</head>
+<body>
+    <div id="container">
+        <div id="content">
+        <h1>Mostrando la Tabla </h1>
+          
+            <% if @dimx.to_i == 0 || @dimy.to_i == 0 || @dimx.to_i < 0 || @dimy.to_i < 0%>
+                <h4> Ooops! Hubo un error con las dimensiones del Terreno</h4>
+                  <form method = 'get' action='/createTerrain'>
+                        <input type = 'submit' value = 'Entendido!'>
+                  </form>
+           <% else %>
+            <p>Terreno Creado :: <%= @dimx %> x <%= @dimy %></p>
+                <table border="1">
+                    <% for row in 0..@dimy-1 do  %>
+                        <tr>
+                            <%for col in 0..@dimx-1 do %>
+                                <td> <%="___"%> </td>
+                            <% end %>
+                        </tr>
+                    <% end %>
+                </table>  
+                <form method = 'get' action='/createTerrain'>
+                    <input type = 'submit' value = 'Anterior'>
+                </form>
+                <form method = 'get' action='/setCarPosition'>
+                    <input type = 'submit' value = 'Siguiente'>
+                </form>
             <% end %>
-        </tr>
-    <% end %>
-</table>
 
 
+        </div>
+    </div>
+</body>
+</html>
 
-<form method = 'get' action='/crear/terreno'>
-    <input type = 'submit' value = 'Anterior'>
-</form>
+<style>
+     @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Regular'), 
+         local('Roboto-Regular'), 
+         url(http://themes.googleusercontent.com/static/fonts/roboto/v11/2UX7WLTfW3W8TclTUvlFyQ.woff) 
+         format('woff');
+  }
+   html, body{
+        font: 10px;
+        font-family: Roboto;  
+        text-align: center;
+        background: #3d3d3d;
+        text-align: center;
+    }
+   #container {
+        position: absolute;
+        margin: -210px 0 0 -360px;
+        left: 55%;
+        top: 40%;
+   }
+   #container table{
+       margin: auto;
+       font-size: 20px;
+       padding: 5px;
+       border:2px solid black;
+       background-color:#f4f4f4;
+   }
+   #content {
+        border: 2px solid white;
+        background: #808080;
+        width: 520px;
+        height: auto;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding: 10px 20px 10px 10px;
+    }
+
+    #container input{
+    margin: auto;
+    margin-top: 20px ;
+    width: 20%;
+    display: block;
+    padding: 5px;
+   }
+</style>

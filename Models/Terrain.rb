@@ -6,6 +6,5 @@ class Terrain
         @rows = rows
         @cols = cols
         @matrix = Array.new(@rows) {Array.new(@cols){Cell.new()}}
-
     end
 end

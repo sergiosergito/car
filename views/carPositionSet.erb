@@ -1,9 +1,98 @@
-<h1>Mostrando posicion del Robot </h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Proyecto Primera Iteracion</title>
 
-<h1><%= @posx %></h1>
-<h1><%= @posy %></h1>
+</head>
+<body>
+    <div id="container">
+        <div id="content">
+            <h1>Mostrando posicion del Robot </h1>
+        
+        
+            <p> Dimensiones del Terreno <%= @dimx %> x <%= @dimy %> </p>
+            <% if @posx.to_i == 0 || @posy.to_i == 0 %>
+                <p> Ooops! Hubo un error con las coordenadas del Robot.</p>
+            <% else %>
+                <p> Coordenadas Del Robot <%= @posx %> x <%= @posy %> </p>
+                <% if @posx.to_i > @dimx.to_i || @posy.to_i > @dimy.to_i%>
+                    <h1>EL ROBOT ESTA FUERA DEL TERRENO</h1>
+                    <% else %>
+                        <table border="1">
+                            <% for row in 0..@dimy-1 do  %>
+                                <tr>
+                                    <%for col in 0..@dimx-1 do %>
+                                        <% if @posx.to_i == col+1 && @posy.to_i == row+1 %>
+                                            <td> <%="X"%> </td>
+                                        <% else %>
+                                            <td> <%="___"%> </td>                                   
+                                        <% end %>
+                                    <% end %>
+                                </tr>
+                            <% end %>
+                    </table> 
+                    <% end %>
+            <% end %>
+            <form method = 'get' action='setCarPosition'>
+                <input type = 'submit' value = 'Anterior'>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
 
 
-<form method = 'get' action='/crear/terreno'>
-    <input type = 'submit' value = 'Anterior'>
-</form>
+
+<style>
+     @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Regular'), 
+         local('Roboto-Regular'), 
+         url(http://themes.googleusercontent.com/static/fonts/roboto/v11/2UX7WLTfW3W8TclTUvlFyQ.woff) 
+         format('woff');
+  }
+   html, body{
+        font: 10px;
+        font-family: Roboto;  
+        text-align: center;
+        background: #3d3d3d;
+       text-align: center;
+    }
+   #container {
+    position: absolute;
+    margin: -210px 0 0 -360px;
+    left: 55%;
+    top: 40%;
+   }
+
+   #container table{
+       style=margin: 0 auto;
+       margin: auto;
+       font-size: 20px;
+       padding: 5px;
+       border:2px solid black;
+       background-color:#f4f4f4;
+   }
+   #content {
+        border: 2px solid white;
+        background: #808080;
+        width: 520px;
+        height: auto;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding: 10px 20px 10px 10px;
+    }
+    #container input{
+    margin: auto;
+    margin-top: 20px ;
+    width: 20%;
+    display: block;
+    padding: 5px;
+   }
+</style>
