@@ -1,13 +1,11 @@
-require "./Models/Terrain"
+require "./lib/robot"
+require "./lib/terrain"
+require "./lib/route"
 require 'sinatra'
 # @@ Inevitable, omnipresente
-@@terrain = Terrain.new(0,0)
-set :DimensionTerrainX,0
-set :DimensionTerrainY,0
-set :PositionX,0
-set :PositionY,0
-set :Ruta,""
-
+@@robot ||= Robot.new
+@@terrain ||= Terrain.new
+@@route ||= Route.new
 
 get '/' do
     erb:principal
@@ -17,42 +15,21 @@ get '/createTerrain' do
     erb:createTerrain
 end
 
-post '/dimensionar' do
+post '/dimensions' do
     @dimx = params[:dimx].to_i
     @dimy = params[:dimy].to_i
-    settings.DimensionTerrainX = @dimx
-    settings.DimensionTerrainY = @dimy
-    #Estoy creando la Tabla,
-    #@@terrain = Terrain.new(@dimx,@dimy)
-    #@@terrain.rows = @dimx #(rows,0)
-    #@@terrain.cols = @dimy #(0,cols)
-    #@@terrain.matrix.each { |x| x.each { |y| puts y.isFree} }
-        
-#    count = 0
-#    for row in 0..@dimx-1 do
-#        for col in 0..@dimy-1 do
-#            puts @@terrain.matrix[row][col].isFree
-#          count += 1
-#       end
-#   end
-#   puts count
-#    puts "good enough"  
-    erb :dimensiones
+    @@terrain.initializate(@dimx,@dimy)
+    erb :dimensions
 end
 get '/setCarPosition' do
     erb:setCarPosition
 end
 post '/carPositionSet' do
-    #RESCATAMOS LAS DIMENSIONES DEL TERRENO
-    @dimx = settings.DimensionTerrainX
-    @dimy = settings.DimensionTerrainY
-
-    @posx = params[:posx]
-    @posy = params[:posy]
-    
-    settings.PositionX = @posx
-    settings.PositionY = @posy
-
+    # Rescatamos las dimensiones del terreno
+    @posx = params[:posx].to_i
+    @posy = params[:posy].to_i
+    @orientation = params[:orientation]
+    @@robot.initializate(@posx,@posy,@orientation)
     erb:carPositionSet
 end
 get '/createRoute' do
@@ -61,15 +38,10 @@ end
 
 post '/route' do
     @ruta = params[:ruta]
-    settings.Ruta = @ruta
+    @@route.initializate(@ruta)
     erb:route
 end
 
 get '/finalPosition' do
-    @dimx = settings.DimensionTerrainX
-    @dimy = settings.DimensionTerrainY
-    @posx = settings.PositionX
-    @posy= settings.PositionY
-    @ruta = settings.Ruta
     erb:finalPosition
 end

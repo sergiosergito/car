@@ -9,12 +9,11 @@
         <div id="content">
             <h1>CREAR RUTA</h1>
             <form  method = 'post' action = '/route'>
-            ruta = <input type="textfield" name="ruta"><br>
-                  <input type="button" value="Arriba (U)" onClick="ruta.value+='-U'">
-                  <input type="button" value="Abajo (D)" onClick="ruta.value+='-D'">
+                  <input type="textfield" name="ruta"><br>
+                  <input type="button" value="Avanzar (M)" onClick="ruta.value+='M'">
                   <br>
-                  <input type="button" value="Derecha (R)" onClick="ruta.value+='-R'">
-                  <input type="button" value="Izquieda (L)" onClick="ruta.value+='-L'">
+                  <input type="button" value="Girar Izquieda (L)" onClick="ruta.value+='L'">
+                  <input type="button" value="Girar Derecha (R)" onClick="ruta.value+='R'">
                   <br> 
                   <input type="reset" value="Borrar Ruta Entera">
                   <input type="submit" value="Iniciar">

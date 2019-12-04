@@ -12,17 +12,26 @@
         <div id="content">
         <h1>Mostrando la Tabla </h1>
           
-            <% if @dimx.to_i == 0 || @dimy.to_i == 0 || @dimx.to_i < 0 || @dimy.to_i < 0%>
+            <%# Validacion de las Dimensiones del Terreno %>
+           
+            <% if @@terrain.validate_terrain() == false %>
+           
+                <%# Mensajes de error para dimensiones incorrectas %>
+           
                 <h4> Ooops! Hubo un error con las dimensiones del Terreno</h4>
-                  <form method = 'get' action='/createTerrain'>
-                        <input type = 'submit' value = '¡Entendido!'>
-                  </form>
-           <% else %>
-            <p>Terreno Creado :: <%= @dimx %> x <%= @dimy %></p>
+                <form method = 'get' action='/createTerrain'>
+                    <input type = 'submit' value = '¡Entendido!'>
+                </form>
+           
+            <% else %>
+           
+                <%# Creacion del Terreno despues de la Validacion %>          
+           
+                <p>Terreno Creado :: <%= @@terrain.get_DimX() %> x <%= @@terrain.get_DimY() %></p>            
                 <table border="1">
-                    <% for row in 0..@dimy-1 do  %>
+                    <% for row in 0..@@terrain.get_DimY()-1 do  %>
                         <tr>
-                            <%for col in 0..@dimx-1 do %>
+                            <%for col in 0..@@terrain.get_DimX()-1 do %>
                                 <td> <%="___"%> </td>
                             <% end %>
                         </tr>
@@ -34,10 +43,7 @@
                 <form method = 'get' action='/createTerrain'>
                     <input type = 'submit' value = 'Anterior'>
                 </form>
-
             <% end %>
-
-
         </div>
     </div>
 </body>

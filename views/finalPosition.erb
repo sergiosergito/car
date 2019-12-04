@@ -11,80 +11,62 @@
     <div id="container">
         <div id="content">
             <h1> RESULTADO </h1>
-            <p>Datos <%=@ruta%>
-            Terreno <%=@dimx%> * <%=@dimy%>
-            Auto <%=@posx%> * <%=@posy%></p>
-            <% 
-                @tamRuta= @ruta.size 
-                @FinalPositionX = @posx.to_i
-                @FinalPositionY = @posy.to_i
-            %>
+            <p>
+                Ruta: <%=@@route.translate_Route()%><br>
+            </p>   
             
-            <% for i in 0..@tamRuta-1 do  %>
-                <% if @FinalPositionX.to_i == @dimx ||  @FinalPositionY.to_i == @dimY || @FinalPositionX.to_i == 0 ||  @FinalPositionY.to_i == 0 %>
-                    <h2>¡¡¡El Robot se Salio del Mapa!!!</h2>
-                    <% if @ruta[i]=='U' %>
-                        <p> Numero de Movimento : <%=i/2+1%> Intenando ir Arriba</p>
+            <%#Datos Iniciales%>
+            <h3>Datos Iniciales</h3>
+            <p>
+                Coordenada Inicial X: <%=@@robot.get_posx()%><br>
+                Coordenadas Inicial Y: <%=@@robot.get_posy()%><br>
+                Orientacion Inicial: <%=@@robot.get_orientation()%><br>
+            </p>   
+            <% if (@@robot.calculate_final_route(@@route.get_route(),@@route.get_tam(),@@terrain.get_DimX(),@@terrain.get_DimY())==true)%>
+                <%#Resultados de la Simulacion%>
+                <h3>Resultado de la Simulacion</h3>
+                <p>
+                  Coordenada Final X: <%=@@robot.get_posx_final()%><br>
+                  Coordenadas Final Y: <%=@@robot.get_posy_final()%><br>
+                  Orientacion Final: <%=@@robot.get_orientation_final()%><br>
+                </p>
+                <%#Graficando la Tabla Resultado si todos los datos son correctos%>
+            
+                <table border="1">
+                    <% for row in 0..@@terrain.get_DimY()-1 do  %>
+                        <tr>
+                            <%for col in 0..@@terrain.get_DimX()-1 do %>
+                                <% if @@robot.get_posx() == col+1 && @@robot.get_posy() == row+1 %>
+                                    <td> <%="X"%> </td>
+                                <% else %>
+                                    <% if @@robot.get_posx_final() == col+1 && @@robot.get_posy_final() == row+1 %>
+                                        <td> <%="@"%> </td>
+                                    <% else %>
+                                        <td> <%="___"%> </td>  
+                                    <% end %>         
+                                <% end %>
+                            <% end %>
+                        </tr>
                     <% end %>
-                    <% if @ruta[i]=='D' %>
-                        <p> Numero de Movimento : <%=i/2+1%> Intenando ir Bajo</p>
-                    <% end %>
-                    <% if @ruta[i]=='L' %> 
-                        <p> Numero de Movimento : <%=i/2+1%> Intenando ir a la Izquierda</p>
-                    <% end %>
-                    <% if @ruta[i]=='R' %>      
-                        <p> Numero de Movimento : <%=i/2+1%> Intenando ir a la Derecha</p>
-                    <% end %>
-                    <%break%>
-                <% else %>
-                    <% if @ruta[i] =='-' %>
-                        <% if @ruta[i+1]=='U' %>
-                                <% 
-                                @FinalPositionY = @FinalPositionY - 1
-                                %>
-                        <% end %>
-                        <% if @ruta[i+1]=='D' %>
-                            <% 
-                                @FinalPositionY = @FinalPositionY + 1
-                                %>
-                        <% end %>
-                        <% if @ruta[i+1]=='L' %> 
-                                <% 
-                                @FinalPositionX = @FinalPositionX - 1
-                                %>
-                        <% end %>
-                        <% if @ruta[i+1]=='R' %>      
-                                <% 
-                                @FinalPositionX = @FinalPositionX + 1
-                                %>
-                        <% end %>
-                    <% end %>
-                <% end %>
+               </table>
+                <%@@robot.set_final_position(@@robot.get_posx(),@@robot.get_posy(),@@robot.get_orientation())%>
+                <form method = 'get' action='/createRoute'>
+                    <input type = 'submit' value = '¡Intentar una nueva Ruta!'>
+                </form>
+                <form method = 'get' action='/'>
+                    <input type = 'submit' value = 'Volver Al Inicio'>
+                </form>
+            <% else %>
+
+                <%#Mensaje de Error!%>
+                <%@@robot.set_final_position(@@robot.get_posx(),@@robot.get_posy(),@@robot.get_orientation())%>
+                <h1>¡¡El Robot se Saldra del Tablero con los movientos!!</h1>
+                <form method = 'get' action='/createRoute'>
+                    <input type = 'submit' value = '¡Entendido!'>
+                </form>
+
             <% end %>
 
-            <table border="1">
-                <% for row in 0..@dimy-1 do  %>
-                    <tr>
-                        <%for col in 0..@dimx-1 do %>
-                            <% if @posx.to_i == col+1 && @posy.to_i == row+1 %>
-                                <td> <%="X"%> </td>
-                            <% else %>
-                                <% if @FinalPositionX.to_i == col+1 && @FinalPositionY.to_i == row+1 %>
-                                    <td> <%="@"%> </td>
-                                <% else %>
-                                    <td> <%="___"%> </td>  
-                                <% end %>         
-                            <% end %>
-                        <% end %>
-                    </tr>
-                <% end %>
-            </table>
-
-            <h4>Posición FInal <%=@FinalPositionX%> x <%=@FinalPositionY%></h4>
-
-            <form method = 'get' action='/'>
-                <input type = 'submit' value = 'Volver Al Inicio'>
-            </form>
         </div>
     </div>
 </body>

@@ -11,24 +11,10 @@
     <div id="container">
         <div id="content">
             <h1>Mostrando Ruta Guardada</h1>
-            <h4>Datos <%=@ruta%></h4>
-            <% @tamRuta= @ruta.size %>
-            <% for i in 0..@tamRuta do  %>
-                <% if @ruta[i] =='-' %>
-                    <% if @ruta[i+1]=='U' %>
-                        <p> DEBE IR ARRIBA</p>
-                    <% end %>
-                    <% if @ruta[i+1]=='D' %>
-                        <p> DEBE IR ABAJO</p>
-                    <% end %>
-                    <% if @ruta[i+1]=='L' %>
-                        <p> DEBE IR A LA IZQUIERDA</p>
-                    <% end %>
-                    <% if @ruta[i+1]=='R' %>
-                        <p> DEBE IR A LA DERECHA</p>
-                    <% end %>
-                <% end %>
-            <% end %>
+            <h4>Datos <%=@@route.get_route()%></h4>                 
+            <h5>Cantidad :: <%=@@route.get_tam()%></h5><br>
+            <h5>Instruccion :: <%=@@route.translate_Route()%></h5><br>
+
             <form method = 'get' action='/finalPosition'>
                 <input type = 'submit' value = 'Confirmar'>
             </form>

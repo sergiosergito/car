@@ -11,27 +11,39 @@
     <div id="container">
         <div id="content">
             <h1>Mostrando posicion del Robot </h1>
-            <p> Dimensiones del Terreno <%= @dimx %> x <%= @dimy %> </p>
-            <% if @posx.to_i == 0 || @posy.to_i == 0 || @posy.to_i < 0 || @posx.to_i < 0 ||  @posx.to_i > @dimx.to_i || @posy.to_i > @dimy.to_i%>
+
+            <%# Datos Registrados Actuales%>
+
+            <p> Dimensiones del Terreno <%= @@terrain.get_DimX() %> x <%= @@terrain.get_DimY() %> </p>
+            <p> Coordenadas del Robot Eje x: <%= @@robot.get_posx() %> Eje y: <%= @@robot.get_posy() %> Orientacion : <%= @@robot.get_orientation() %>  </p>
+          
+            <%# Validadicion de las Coordenadas del Robot en el Terreno%>
+
+            <% if @@robot.validate_position_car() == false || @@robot.validate_position_car_tarrain(@@terrain.get_DimX(),@@terrain.get_DimY()) ==false || @@robot.validate_orientation()==false%>
+                
+                <%# Mensaje de Advertencia %>
+                
                 <p> Ooops! Hubo un error con las coordenadas del Robot.</p>
                 <form method = 'get' action='/setCarPosition'>
                     <input type = 'submit' value = '¡Entendido!'>
                 </form>
             <% else %>
-                <p> Coordenadas Del Robot <%= @posx %> x <%= @posy %> </p>
-                    <table border="1">
-                        <% for row in 0..@dimy-1 do  %>
-                            <tr>
-                                <%for col in 0..@dimx-1 do %>
-                                    <% if @posx.to_i == col+1 && @posy.to_i == row+1 %>
-                                        <td> <%="X"%> </td>
-                                    <% else %>
-                                        <td> <%="___"%> </td>                                   
-                                    <% end %>
+
+            <%# Posicionamiento del Robot en el Tablero%>
+
+                <table border="1">
+                    <% for row in 0..@@terrain.get_DimY()-1 do  %>
+                        <tr>
+                            <%for col in 0..@@terrain.get_DimX()-1 do %>
+                                <% if @posx.to_i == col+1 && @posy.to_i == row+1 %>
+                                    <td> <%="X"%> </td>
+                                <% else %>
+                                    <td> <%="___"%> </td>                                   
                                 <% end %>
-                            </tr>
-                        <% end %>
-                    </table> 
+                            <% end %>
+                        </tr>
+                    <% end %>
+                </table> 
                 <form method = 'get' action='/createRoute'>
                         <input type = 'submit' value = 'Crear Ruta'>
                 </form> 
