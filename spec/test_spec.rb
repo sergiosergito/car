@@ -348,4 +348,10 @@ RSpec.describe Robots do
         expect(robots.delete("llave")).to eq ("valor")
     end
 
+    it 'Deberia Devolver el nil cuando ingreso llave no existente' do
+        robots.initializate()
+        robots.insert("llave","valor")
+        expect(robots.delete("noexiste")).to eq (nil)
+    end
+
 end
