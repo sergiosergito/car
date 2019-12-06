@@ -6,17 +6,17 @@ class Routes #Insert, get, delete,
         return true
     end
     
-    # def insert (thekey, theelement)
-    #     @robots.store(thekey, theelement)
-    #     return true
-    # end
+    def insert (thekey, theelement)
+        @routes.store(thekey, theelement)
+        return true
+    end
 
     # def get (llave)
-    #     return @robots[llave]
+    #     return @routes[llave]
     # end
 
     # def delete (llave)
-    #     return @robots.delete(llave)
+    #     return @routes.delete(llave)
     # end
     
 end

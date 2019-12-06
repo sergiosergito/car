@@ -381,57 +381,57 @@ RSpec.describe Routes do
         @routes ||= Routes.new
     end
 
-    # #Inicio del la Hash de robots
+    # #Inicio del la Hash de rutas
     it 'Deberia Devolver True Para cuando inicie la Clase' do
         expect(routes.initializate()).to eq (true)
     end
 
-    # it 'Deberia Devolver True cuando inserto llave y valor' do
-    #     robots.initializate()
-    #     expect(robots.insert("llave","valor")).to eq (true)
+    it 'Deberia Devolver True cuando inserto llave y valor' do
+        routes.initializate()
+        expect(routes.insert("llave","valor")).to eq (true)
+    end
+
+    # it 'Deberia Devolver valor cuando envio la llave' do
+    #     routes.initializate()
+    #     routes.insert("llave","valor")
+    #     expect(routes.get("llave")).to eq ("valor")
     # end
 
     # it 'Deberia Devolver valor cuando envio la llave' do
-    #     robots.initializate()
-    #     robots.insert("llave","valor")
-    #     expect(robots.get("llave")).to eq ("valor")
-    # end
-
-    # it 'Deberia Devolver valor cuando envio la llave' do
-    #     robots.initializate()
-    #     robots.insert("llave","valor")
-    #     expect(robots.get("llave")).to eq ("valor")
+    #     routes.initializate()
+    #     routes.insert("llave","valor")
+    #     expect(routes.get("llave")).to eq ("valor")
     # end
 
     # it 'Deberia Devolver el valor cuando elimino el par con la llave' do
-    #     robots.initializate()
-    #     robots.insert("llave","valor")
-    #     expect(robots.delete("llave")).to eq ("valor")
+    #     routes.initializate()
+    #     routes.insert("llave","valor")
+    #     expect(routes.delete("llave")).to eq ("valor")
     # end
 
     # it 'Deberia Devolver el nil cuando ingreso llave no existente' do
-    #     robots.initializate()
-    #     robots.insert("llave","valor")
-    #     expect(robots.delete("noexiste")).to eq (nil)
+    #     routes.initializate()
+    #     routes.insert("llave","valor")
+    #     expect(routes.delete("noexiste")).to eq (nil)
     # end
 
     # it 'Deberia insertar un robot a robots' do
-    #     def robot
-    #         @robot ||= Robot.new
+    #     def route
+    #         @route ||= Route.new
     #     end
-    #     robots.initializate()
-    #     robot.initializate(1,1,"Norte")
-    #     expect(robots.insert("1",robot)).to eq (true)
+    #     routes.initializate()
+    #     route.initializate(1,1,"Norte")
+    #     expect(routes.insert("1",route)).to eq (true)
     # end
 
     # it 'Deberia devolver un robot al buscar al robot' do
-    #     def robot
-    #         @robot ||= Robot.new
+    #     def route
+    #         @route ||= Route.new
     #     end
-    #     robots.initializate()
-    #     robot.initializate(1,1,"Norte")
-    #     robots.insert("1",robot)
-    #     expect(robots.get("1").get_orientation()).to eq ("Norte")
+    #     routes.initializate()
+    #     route.initializate(1,1,"Norte")
+    #     routes.insert("1",robot)
+    #     expect(routes.get("1").get_orientation()).to eq ("Norte")
     # end
 
 end
