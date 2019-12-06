@@ -415,14 +415,14 @@ RSpec.describe Routes do
         expect(routes.delete("noexiste")).to eq (nil)
     end
 
-    # it 'Deberia insertar un robot a robots' do
-    #     def route
-    #         @route ||= Route.new
-    #     end
-    #     routes.initializate()
-    #     route.initializate(1,1,"Norte")
-    #     expect(routes.insert("1",route)).to eq (true)
-    # end
+    it 'Deberia insertar una ruta a rutas' do
+        def route
+            @route ||= Route.new
+        end
+        routes.initializate()
+        route.initializate("U")
+        expect(routes.insert("1",route)).to eq (true)
+    end
 
     # it 'Deberia devolver un robot al buscar al robot' do
     #     def route
