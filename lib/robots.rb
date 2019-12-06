@@ -14,5 +14,9 @@ class Robots #Insert, get, delete,
     def get (llave)
         return @robots[llave]
     end
+
+    def delete (llave)
+        return @robots.delete(llave)
+    end
     
 end
