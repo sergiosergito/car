@@ -324,4 +324,11 @@ RSpec.describe Robots do
     it 'Deberia Devolver True Para cuando inicie la Clase' do
         expect(robots.initializate()).to eq (true)
     end
+
+    it 'Deberia Devolver True cuando inserto llave y valor' do
+        robots.initializate()
+        expect(robots.insert("llave","valor")).to eq (true)
+    end
+
+
 end
