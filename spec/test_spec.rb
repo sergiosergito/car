@@ -391,29 +391,29 @@ RSpec.describe Routes do
         expect(routes.insert("llave","valor")).to eq (true)
     end
 
-    # it 'Deberia Devolver valor cuando envio la llave' do
-    #     routes.initializate()
-    #     routes.insert("llave","valor")
-    #     expect(routes.get("llave")).to eq ("valor")
-    # end
+    it 'Deberia Devolver valor cuando envio la llave' do
+        routes.initializate()
+        routes.insert("llave","valor")
+        expect(routes.get("llave")).to eq ("valor")
+    end
 
-    # it 'Deberia Devolver valor cuando envio la llave' do
-    #     routes.initializate()
-    #     routes.insert("llave","valor")
-    #     expect(routes.get("llave")).to eq ("valor")
-    # end
+    it 'Deberia Devolver valor cuando envio la llave' do
+        routes.initializate()
+        routes.insert("llave","valor")
+        expect(routes.get("llave")).to eq ("valor")
+    end
 
-    # it 'Deberia Devolver el valor cuando elimino el par con la llave' do
-    #     routes.initializate()
-    #     routes.insert("llave","valor")
-    #     expect(routes.delete("llave")).to eq ("valor")
-    # end
+    it 'Deberia Devolver el valor cuando elimino el par con la llave' do
+        routes.initializate()
+        routes.insert("llave","valor")
+        expect(routes.delete("llave")).to eq ("valor")
+    end
 
-    # it 'Deberia Devolver el nil cuando ingreso llave no existente' do
-    #     routes.initializate()
-    #     routes.insert("llave","valor")
-    #     expect(routes.delete("noexiste")).to eq (nil)
-    # end
+    it 'Deberia Devolver el nil cuando ingreso llave no existente' do
+        routes.initializate()
+        routes.insert("llave","valor")
+        expect(routes.delete("noexiste")).to eq (nil)
+    end
 
     # it 'Deberia insertar un robot a robots' do
     #     def route

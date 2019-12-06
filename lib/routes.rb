@@ -11,12 +11,12 @@ class Routes #Insert, get, delete,
         return true
     end
 
-    # def get (llave)
-    #     return @routes[llave]
-    # end
+    def get (llave)
+        return @routes[llave]
+    end
 
-    # def delete (llave)
-    #     return @routes.delete(llave)
-    # end
+    def delete (llave)
+        return @routes.delete(llave)
+    end
     
 end
