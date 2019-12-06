@@ -1,6 +1,7 @@
 require "./lib/robot"
 require "./lib/terrain"
 require "./lib/route"
+require "./lib/robots"
 
 
 RSpec.describe Robot do
@@ -312,4 +313,15 @@ RSpec.describe Route do
     it 'Deberia devolver Giro Izquierda al iniciar los datos con R' do
         expect(route.translate('L')).to eq ("Giro Izquierda")
     end 
+end
+
+RSpec.describe Robots do
+
+    def robots
+        @robots ||= Robots.new
+    end
+    #Inicio del la Hash de robots
+    it 'Deberia Devolver True Para cuando inicie la Clase' do
+        expect(robots.initializate()).to eq (true)
+    end
 end
