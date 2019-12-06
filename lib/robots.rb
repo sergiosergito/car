@@ -10,5 +10,9 @@ class Robots #Insert, get, delete,
         @robots.store(thekey, theelement)
         return true
     end
+
+    def get (llave)
+        return @robots[llave]
+    end
     
 end

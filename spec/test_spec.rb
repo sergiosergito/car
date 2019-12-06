@@ -330,5 +330,10 @@ RSpec.describe Robots do
         expect(robots.insert("llave","valor")).to eq (true)
     end
 
+    it 'Deberia Devolver valor cuando envio la llave' do
+        robots.initializate()
+        robots.insert("llave","valor")
+        expect(robots.get("llave")).to eq ("valor")
+    end
 
 end
