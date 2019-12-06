@@ -424,14 +424,14 @@ RSpec.describe Routes do
         expect(routes.insert("1",route)).to eq (true)
     end
 
-    # it 'Deberia devolver un robot al buscar al robot' do
-    #     def route
-    #         @route ||= Route.new
-    #     end
-    #     routes.initializate()
-    #     route.initializate(1,1,"Norte")
-    #     routes.insert("1",robot)
-    #     expect(routes.get("1").get_orientation()).to eq ("Norte")
-    # end
+    it 'Deberia devolver una ruta al buscar la ruta' do
+        def route
+            @route ||= Route.new
+        end
+        routes.initializate()
+        route.initializate("M")
+        routes.insert("1",route)
+        expect(routes.get("1").get_route()).to eq ("M")
+    end
 
 end
