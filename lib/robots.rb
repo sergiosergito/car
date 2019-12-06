@@ -1,3 +1,5 @@
+require 'robot'
+
 class Robots #Insert, get, delete, 
 
     def initializate ()

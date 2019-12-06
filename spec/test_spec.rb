@@ -354,4 +354,23 @@ RSpec.describe Robots do
         expect(robots.delete("noexiste")).to eq (nil)
     end
 
+    it 'Deberia insertar un robot a robots' do
+        def robot
+            @robot ||= Robot.new
+        end
+        robots.initializate()
+        robot.initializate(1,1,"Norte")
+        expect(robots.insert("1",robot)).to eq (true)
+    end
+
+    it 'Deberia devolver un robot al buscar al robot' do
+        def robot
+            @robot ||= Robot.new
+        end
+        robots.initializate()
+        robot.initializate(1,1,"Norte")
+        robots.insert("1",robot)
+        expect(robots.get("1").get_orientation()).to eq ("Norte")
+    end
+
 end
