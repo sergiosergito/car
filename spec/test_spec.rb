@@ -141,6 +141,12 @@ RSpec.describe Terrain do
         terrain.initializate(6,6)
         expect(terrain.validate_terrain()).to eq (true)
     end
+    it 'Deberia Devolver 0 carritos cuando creo el Terreno' do
+        terrain.initializate(6,6)
+        expect(terrain.get_count()).to eq (0)
+    end
+
+
 end
 
 RSpec.describe Robot do

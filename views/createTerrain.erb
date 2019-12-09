@@ -15,8 +15,14 @@
                 Dimension en X: <input id="q" type = 'text' name = 'dimx' required>
                 Dimension en Y: <input id="q"type = 'text' name = 'dimy' required>
                 <input type = 'submit' value = 'Aceptar'>
-            </form>
+                <% if @@terrain.get_count() <= 4 %>
+                    Existen <%= @@terrain.get_count() %> carros
+                    <input type = 'submit' value = 'Agregar Carrito'>
+                <% else %> 
                 
+                <% end %>
+            </form>
+            
             <form method = 'get' action='/'>
                 <input type = 'submit' value = 'Anterior'>
             </form>

@@ -1,17 +1,22 @@
 require "./lib/robot"
 require "./lib/terrain"
 require "./lib/route"
+require "./lib/robots"
+require "./lib/routes"
 require 'sinatra'
 # @@ Inevitable, omnipresente
 @@robot ||= Robot.new
 @@terrain ||= Terrain.new
 @@route ||= Route.new
+@@robots ||= Robots.new
+@@routes ||= Routes.new
 
 get '/' do
     erb:principal
 end
 
 get '/createTerrain' do
+    @@terrain.initializate(@dimx,@dimy)
     erb:createTerrain
 end
 

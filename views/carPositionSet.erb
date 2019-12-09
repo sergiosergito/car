@@ -18,7 +18,7 @@
             <p> Coordenadas del Robot Eje x: <%= @@robot.get_posx() %> Eje y: <%= @@robot.get_posy() %> Orientacion : <%= @@robot.get_orientation() %>  </p>
           
             <%# Validadicion de las Coordenadas del Robot en el Terreno%>
-
+                
             <% if @@robot.validate_position_car() == false || @@robot.validate_position_car_tarrain(@@terrain.get_DimX(),@@terrain.get_DimY()) ==false || @@robot.validate_orientation()==false%>
                 
                 <%# Mensaje de Advertencia %>

@@ -2,7 +2,8 @@ class Terrain
     def initializate (x,y)
         @DimX = x
         @DimY = y
-        true
+        @CarCount = 0
+        return true
     end
     def get_DimX ()
         return @DimX
@@ -18,5 +19,9 @@ class Terrain
             resp = true
         end
         return resp
+    end
+
+    def get_count()
+        return @CarCount
     end
 end
