@@ -24,7 +24,7 @@ post '/dimensions' do
     @dimx = params[:dimx].to_i
     @dimy = params[:dimy].to_i
     @@terrain.set_dimensions(@dimx,@dimy)
-    erb :dimensions
+    erb :createCar
 end
 get '/setCarPosition' do
     erb:setCarPosition
