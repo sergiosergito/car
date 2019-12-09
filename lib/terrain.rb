@@ -3,7 +3,7 @@ class Terrain
         @DimX = x
         @DimY = y
         @CarCount = 0
-        return true
+        return true 
     end
     def get_DimX ()
         return @DimX
@@ -24,4 +24,10 @@ class Terrain
     def get_count()
         return @CarCount
     end
+
+    def set_dimensions(x,y)
+        @DimX = x
+        @DimY = y 
+    end
+
 end

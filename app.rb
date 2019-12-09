@@ -23,7 +23,9 @@ end
 post '/dimensions' do
     @dimx = params[:dimx].to_i
     @dimy = params[:dimy].to_i
-    @@terrain.initializate(@dimx,@dimy)
+    @@terrain.DimX = @dimx
+    @@terrain.DimY = @dimx
+    #@@terrain.initializate(@dimx,@dimy)
     erb :dimensions
 end
 get '/setCarPosition' do

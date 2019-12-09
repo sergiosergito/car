@@ -145,7 +145,16 @@ RSpec.describe Terrain do
         terrain.initializate(6,6)
         expect(terrain.get_count()).to eq (0)
     end
-
+    it 'Deberia Devolver 5 en x cuando actualizo su coordenada' do
+        terrain.initializate(6,6)
+        terrain.set_dimensions(5,0)
+        expect(terrain.get_DimX()).to eq (5)
+    end
+    it 'Deberia Devolver 4 en y cuando actualizo su coordenada' do
+        terrain.initializate(6,6)
+        terrain.set_dimensions(0,4)
+        expect(terrain.get_DimY()).to eq (4)
+    end
 
 end
 
