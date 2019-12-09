@@ -37,11 +37,18 @@
                         </tr>
                     <% end %>
                 </table>                  
-                <form method = 'get' action='/setCarPosition'>
-                    <input type = 'submit' value = 'Siguiente'>
-                </form>
+                <% if @@terrain.get_count() < 4 %>
+                    Existen <%= @@terrain.get_count() %> carros
+                    <form method = 'get' action='/setCarPosition'>
+                        <input type = 'submit' value = 'Agregar Carrito'>
+                        <%# input type = 'submit' value = 'Siguiente' ##%> 
+                        
+                    </form>
+                <% else %> 
+                    <p> Ya existen 4 carritos </p>
+                <% end %>
                 <form method = 'get' action='/createTerrain'>
-                    <input type = 'submit' value = 'Anterior'>
+                    <input type = 'submit' value = 'Ir atras'>
                 </form>
             <% end %>
         </div>
