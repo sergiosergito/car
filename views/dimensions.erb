@@ -39,10 +39,9 @@
                 </table>                  
                 <% if @@terrain.get_count() < 4 %>
                     Existen <%= @@terrain.get_count() %> carros
-                    <form method = 'get' action='/setCarPosition'>
+                    <form method = 'get' action='/createCar'>
                         <input type = 'submit' value = 'Agregar Carrito'>
                         <%# input type = 'submit' value = 'Siguiente' ##%> 
-                        
                     </form>
                 <% else %> 
                     <p> Ya existen 4 carritos </p>

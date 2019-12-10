@@ -25,6 +25,10 @@ class Terrain
         return @CarCount
     end
 
+    def add_count()
+        @CarCount = @CarCount + 1
+    end
+
     def set_dimensions(x,y)
         @DimX = x
         @DimY = y 

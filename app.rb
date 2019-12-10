@@ -17,6 +17,7 @@ end
 
 get '/createTerrain' do
     @@terrain.initializate(@dimx,@dimy)
+    @@robots.initializate()
     erb:createTerrain
 end
 
@@ -24,17 +25,31 @@ post '/dimensions' do
     @dimx = params[:dimx].to_i
     @dimy = params[:dimy].to_i
     @@terrain.set_dimensions(@dimx,@dimy)
+    erb :dimensions
+end
+
+get '/createCar' do
+    # Rescatamos las dimensiones del terreno
+    
+    @posx = params[:posx].to_i
+    @posy = params[:posy].to_i
+    @orientation = params[:orientation]
+    @@robot.initializate(@posx,@posy,@orientation)
     erb :createCar
 end
+
 get '/setCarPosition' do
     erb:setCarPosition
 end
+
 post '/carPositionSet' do
     # Rescatamos las dimensiones del terreno
     @posx = params[:posx].to_i
     @posy = params[:posy].to_i
     @orientation = params[:orientation]
     @@robot.initializate(@posx,@posy,@orientation)
+    @@robots.insert(params[:nombre],@robot)
+    @@terrain.add_count()
     erb:carPositionSet
 end
 get '/createRoute' do
