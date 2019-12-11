@@ -12,6 +12,8 @@
         <div id="content">
             <h1> RESULTADO </h1>
             <%# Calcular Ruta de Cada Uno Y Mostrar%>
+            <h4>Dimesiones del Terreno <br> Dimension X : <%= @@terrain.get_DimX() %> <br> Dimension Y : <%= @@terrain.get_DimY() %></h4>            
+               
             <% for i in 0..@@cantRobots-1 do%>
                 <h2>Robot Numero <%=i+1%></h2>
                  <% if (@@robots[i].calculate_final_route(@@routes[i].get_route(),@@routes[i].get_tam(),@@terrain.get_DimX(),@@terrain.get_DimY())==true)%>
