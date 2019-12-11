@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Proyecto Segunda Iteracion</title>
+
+</head>
+<body>
+    <div id="container">
+        <div id="content">
+            <h1> RESULTADO </h1>
+            <%# Calcular Ruta de Cada Uno Y Mostrar%>
+            <% for i in 0..@@cantRobots-1 do%>
+                <h2>Robot Numero <%=i+1%></h2>
+                 <% if (@@robots[i].calculate_final_route(@@routes[i].get_route(),@@routes[i].get_tam(),@@terrain.get_DimX(),@@terrain.get_DimY())==true)%>
+                <%#Resultados de la Simulacion%>
+                <h3>Datos Iniciales</h3>
+                <table border="1">
+                <tr>
+                    <td><strong>Coordenada Inicial X</td>
+                    <td><strong>Coordenada Inicial Y</td>
+                    <td><strong>Orientacion</td>
+                    <td><strong>Ruta del Robot</td>
+                </tr>
+                <tr>
+                    <td><%=@@robots[i].get_posx()%></td>
+                    <td><%=@@robots[i].get_posy()%></td>
+                    <td><%=@@robots[i].get_orientation()%></td>
+                    <td><%=@@routes[i].translate_Route()%></td>
+                </tr>
+               </table>
+                
+                <h3>Resultado de la Simulacion</h3>
+                <table border="1">
+                <tr>
+                    <td><strong>Coordenada Final X</td>
+                    <td><strong>Coordenada Final Y</td>
+                    <td><strong>Orientacion Final</td>
+                </tr>
+                <tr>
+                    <td><%=@@robots[i].get_posx_final()%></td>
+                    <td><%=@@robots[i].get_posy_final()%></td>
+                    <td><%=@@robots[i].get_orientation_final()%></td>
+                </tr>
+                </table>
+                
+                <h3>Resultado de el Tablero</h3>
+                <table border="1">
+                    <% for row in 0..@@terrain.get_DimY()-1 do  %>
+                        <tr>
+                            <%for col in 0..@@terrain.get_DimX()-1 do %>
+                                <% if @@robots[i].get_posx() == col+1 && @@robots[i].get_posy() == row+1 %>
+                                    <td> <%="X"%> </td>
+                                <% else %>
+                                    <% if @@robots[i].get_posx_final() == col+1 && @@robots[i].get_posy_final() == row+1 %>
+                                        <td> <%="@"%> </td>
+                                    <% else %>
+                                        <td> <%="___"%> </td>  
+                                    <% end %>         
+                                <% end %>
+                            <% end %>
+                        </tr>
+                    <% end %>
+               </table>
+                <% else %>
+                    <%#Mensaje de Error!%>
+                    <h3>Datos Iniciales</h3>
+                        <table border="1">
+                        <tr>
+                            <td><strong>Coordenada Inicial X</td>
+                            <td><strong>Coordenada Inicial Y</td>
+                            <td><strong>Orientacion</td>
+                            <td><strong>Ruta del Robot</td>
+                        </tr>
+                        <tr>
+                            <td><%=@@robots[i].get_posx()%></td>
+                            <td><%=@@robots[i].get_posy()%></td>
+                            <td><%=@@robots[i].get_orientation()%></td>
+                            <td><%=@@routes[i].translate_Route()%></td>
+                        </tr>
+                    </table>
+                    <h3>¡¡El Robot termino fuera del Tablero con la ruta Registrada!!</h3>
+                <% end %>
+            <% end %>
+            <form method = 'get' action='/'>
+                    <input type = 'submit' value = '¡Genial!'>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+     @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Regular'), 
+         local('Roboto-Regular'), 
+         url(http://themes.googleusercontent.com/static/fonts/roboto/v11/2UX7WLTfW3W8TclTUvlFyQ.woff) 
+         format('woff');
+  }
+   html, body{
+       font: 10px;
+       font-family: Roboto;  
+       text-align: center;
+       background: #3d3d3d;
+       text-align: center;
+    }
+   #container {
+        position: absolute;
+        margin: -210px 0 0 -360px;
+        left: 35%;
+        top: 40%;
+   }
+
+   #container table{
+       style=margin: 0 auto;
+       margin: auto;
+       font-size: 14px;
+       padding: 5px;
+       border:2px solid black;
+       background-color:#f4f4f4;
+   }
+   #content {
+        border: 2px solid white;
+        background: #808080;
+        width: 1200px;
+        height: auto;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding: 10px 20px 10px 10px;
+    }
+
+   input[type=button], input[type=submit], input[type=reset] {
+        background-color: #f4f4f4;
+        border: 2px solid black;
+        color: black;
+        padding: 16px 32px;
+        font-size: 16px;
+        min-width: 21%;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+
+    }
+    input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+      background-color: #333;
+      color:white;
+    }
+</style>

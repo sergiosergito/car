@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Proyecto Segunda Iteracion</title>
+
+</head>
+<body>
+    <div id="container">
+        <div id="content">
+             <h2>Numero Robots Que puede Mover: <%=@@cantRobots%></h2>
+            <h1>CREAR TERRENO UNIVERSAL</h1>
+            
+            <form method = 'post' action='/ShowResultsManyCars'>
+                Dimension en X: <input id="q" type = 'text' name = 'dimx' required>
+                Dimension en Y: <input id="q"type = 'text' name = 'dimy' required>
+            <h1>DAR POSICIONES / ORIENTACION / RUTAS AL ROBOT</h1>
+            
+            <h4>PARA CREAR LA RUTA</h4>
+            <p>
+                M = "AVANZAR" <br>
+                R = "GIRAR DERECHA"<br>
+                L = "GIRAR IZQUIERDA"<br>
+            </p>
+                <% for i in 0..@@cantRobots-1 do%>
+                    <h3>Robot Numero <%=i+1%></h3>
+                    Dimension en X  : <input type = 'text' name = '<%=i%>_posx' required>
+                    Dimension en Y  : <input type = 'text' name = '<%=i%>_posy' required>
+                    Orientacion  :
+                    <select name="<%=i%>_orientation">
+                            <option value="Norte">Norte</option>
+                            <option value="Este">Este</option>
+                            <option value="Oeste">Oeste</option>
+                            <option value="Sur">Sur</option>
+                    </select>
+                    Ruta  :<input type="text" name="<%=i%>_ruta" required><br>
+                 
+                <% end %>
+                <br>
+                <input type = 'submit' value = 'Aceptar'>
+            
+            </form>
+            <form method = 'get' action='/manyRobots'>
+                <input type = 'submit' value = 'Anterior'>
+            </form>
+            
+        </div>
+    </div>
+</body>
+</html>
+
+
+<style>
+  @font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Regular'), 
+        local('Roboto-Regular'), 
+        url(http://themes.googleusercontent.com/static/fonts/roboto/v11/2UX7WLTfW3W8TclTUvlFyQ.woff) 
+        format('woff');
+  }
+   html, body{
+        font: 10px;
+        font-family: Roboto;  
+        text-align: center;
+        background: #3d3d3d;
+   
+    }
+   #container {
+        position: absolute;
+        margin: -210px 0 0 -360px;
+        left: 35%;
+        top: 40%;
+   }
+   #content {
+        border: 2px solid white;
+        background: #808080;
+        width: 1200px;
+        height: auto;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding: 10px 20px 10px 10px;
+    }
+     input[type=submit], input[type=reset]{
+        border: 2px solid black;
+        margin: auto;
+        margin-top: 20px ;
+    
+        width: 250PX;
+        padding: 5px;
+     }
+    input[type=textfield] {
+        width: 90%;
+        margin: 8px 0;
+        border: 1px solid black;
+        border-radius: 1px;
+        text-align: center;
+        color: #333;
+
+    }
+    input[type=button] {
+        border: 2px solid black;
+        color: black;
+        font-size: 16px;
+        min-width: 21%;
+        margin: 4px 2px;
+        cursor: pointer;
+        width:200px;
+    }
+    input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+      background-color: #333;
+      color:white;
+    }
+</style>

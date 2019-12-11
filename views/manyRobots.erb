@@ -10,32 +10,22 @@
 <body>
     <div id="container">
         <div id="content">
-            <h1> Dar posicion al Robot </h1>
-            <form method = 'post' action='/carPositionSet'>
-                Dimension en X: <input type = 'text' name = 'posx' required>
-                Dimension en Y: <input type = 'text' name = 'posy' required>
-                Orientacion
-                <select name="orientation">
-                        <option value="Norte">Norte</option>
-                        <option value="Este">Este</option>
-                        <option value="Oeste">Oeste</option>
-                        <option value="Sur">Sur</option>
-                </select>
-                <input type = 'submit' value = 'Aceptar'>
-            </form>
-            
-
+            <h1>MENU PRINCIPAL / CREANDO VARIOS AUTOS</h1>
+              <form method = 'post' action='/setPositionManyCars_And_CreateTerrain'>
+                  Numero de Robots : <input type="numeric" name="cant_robots" required><br>
+                  <input type = 'submit' value = 'Aceptar'>
+              </form>
+                
             <form method = 'get' action='/'>
-                <input type = 'submit' value = 'Cancelar'>
+                <input type = 'submit' value = 'Anterior'>
             </form>
+          
         </div>
     </div>
 </body>
 </html>
-
-
 <style>
-     @font-face {
+    @font-face {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -60,17 +50,14 @@
    }
    #container a:link:hover{
        background-color: white;
-        
        transition:0.6s;
    }
-   #container input , select{
+   #container input{
        margin: auto;
        margin-top: 20px ;
        width: 50%;
        display: block;
        padding: 5px;
-       text-decoration: none;
-       border:2px solid black;
    }
 
    #container a:link, {
@@ -88,15 +75,15 @@
         border: 2px solid white;
         background: #808080;
         width: 520px;
-        height: auto;
+        height: 420px;
         position: absolute;
         top: 10px;
         left: 10px;
         padding: 10px 20px 10px 10px;
     }
-    input[type=button], input[type=submit], input[type=reset] {
+        input[type=button], input[type=submit], input[type=reset] {
         background-color: #f4f4f4;
-        border: 2px solid black;
+        border: 3px solid black;
         color: black;
         padding: 16px 32px;
         font-size: 16px;
