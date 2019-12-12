@@ -9,3 +9,4 @@ gem "rspec"
 gem "simplecov"
 gem "simplecov-console"
 gem "rake"
+gem 'nokogiri', '1.10.5'
