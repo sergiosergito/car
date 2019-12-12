@@ -7,3 +7,5 @@ install:
   - gem install rspec
   - gem install simplecov
   - gem install simplecov-console
+
+script: bundle exec rake build && bundle exec rake builddoc
