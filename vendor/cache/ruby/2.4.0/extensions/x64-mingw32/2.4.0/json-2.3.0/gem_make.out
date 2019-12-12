@@ -1,0 +1,13 @@
+current directory: C:/Users/sergi/Documents/University/Software_Engineering/2019/car/car/vendor/cache/ruby/2.4.0/gems/json-2.3.0/ext/json
+C:/Ruby24-x64/bin/ruby.exe -r ./siteconf20191212-9552-e40co1.rb extconf.rb
+creating Makefile
+
+current directory: C:/Users/sergi/Documents/University/Software_Engineering/2019/car/car/vendor/cache/ruby/2.4.0/gems/json-2.3.0/ext/json
+make "DESTDIR=" clean
+
+current directory: C:/Users/sergi/Documents/University/Software_Engineering/2019/car/car/vendor/cache/ruby/2.4.0/gems/json-2.3.0/ext/json
+make "DESTDIR="
+make: Nothing to be done for 'all'.
+
+current directory: C:/Users/sergi/Documents/University/Software_Engineering/2019/car/car/vendor/cache/ruby/2.4.0/gems/json-2.3.0/ext/json
+make "DESTDIR=" install
