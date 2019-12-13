@@ -1,4 +1,5 @@
 language: ruby
+rvm: 2.4.4
 install:
   - gem install sinatra
   - gem install cucumber
@@ -7,3 +8,7 @@ install:
   - gem install rspec
   - gem install simplecov
   - gem install simplecov-console
+
+script:
+  - "bundle exec rake spec"
+  - "bundle exec cucumber"
